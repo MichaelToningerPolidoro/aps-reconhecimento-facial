@@ -13,6 +13,10 @@
 ***
 
 ## <a name='sobre-trabalho'>1. Sobre o trabalho 🎯</a>
+   O trabalho tem como o tema, a autenticação biométrica, as quais vem sendo
+   amplamente utilizadas nos dias atuais, como uma forma mais segura de validar
+   quem realmente está tentando algum acesso.
+   O método de biometria escolhido para o trabalho foi o de reconhecimento facial.
 
   <br/><br/>[Voltar ao índice](#indice)
   
@@ -30,6 +34,11 @@
   <br/><br/>[Voltar ao índice](#indice)
   
 ## <a name='tecnologias-utilizadas'>4. Tecnologias utilizadas 💻</a>
+   Algumas tecnologias/bibliotecas foram utilizadas no projeto, sendo elas:
+   
+   - Python 3.9
+   - OpenCV (opencv-contrib-python)
+   - MySql
 
   <br/><br/>[Voltar ao índice](#indice)
   
