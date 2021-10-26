@@ -2,6 +2,7 @@ fotos/
 classificadorLBPH.yml
 classificadorFisher.yml
 classificadorEigen.yml
+config.config
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
