@@ -36,6 +36,6 @@ print('Treinando ...')
 #fisherface.write('classificadorFisher.yml')
 
 lbph.train(faces, ids)
-lbph.write('reconhecedor_faces/classificadorLBPH.yml')
+lbph.write('reconhecedor_faces/classificadores/classificadorLBPH.yml')
 
 print('Treinamento realizado !!!')

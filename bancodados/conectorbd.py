@@ -5,6 +5,7 @@ config = configparser.RawConfigParser()
 
 config.read('config.config')
 
+#Adicionar o db=... nos parametros ali
 db = mysql.connector.connect(
     host=config.get('database', 'url'),
     user=config.get('database', 'user'),

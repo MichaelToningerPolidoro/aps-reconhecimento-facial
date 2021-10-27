@@ -1,8 +1,8 @@
 import cv2
 import numpy as np
 
-classificador = cv2.CascadeClassifier('reconhecedor_faces/haarcascade_frontalface_default.xml')
-classificadorOlho = cv2.CascadeClassifier('reconhecedor_faces/haarcascade_eye.xml')
+classificador = cv2.CascadeClassifier('reconhecedor_faces/classificadores/haarcascade_frontalface_default.xml')
+classificadorOlho = cv2.CascadeClassifier('reconhecedor_faces/classificadores/haarcascade_eye.xml')
 
 camera = cv2.VideoCapture(0)
 caminhoImagens = 'reconhecedor_faces/fotos'
@@ -18,7 +18,6 @@ nivelLuminosidadeBoa = 110
 #Id para reconhecer quem é a pessoa, ou seja, identificador pode ser o nome
 id = input('Digite seu identificador: ')
 print('Capturando as faces ...')
-
 
 while True:
     conectado, imagem = camera.read()
