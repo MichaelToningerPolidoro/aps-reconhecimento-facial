@@ -34,5 +34,3 @@ def reconhecerPessoa() -> int:
             break
     
     return idPessoaReconhecida
-
-print(reconhecerPessoa())
