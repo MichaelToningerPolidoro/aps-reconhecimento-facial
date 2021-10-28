@@ -14,7 +14,7 @@ class Bd:
         self._bdurl = config.get('database', 'url')
         self._bdusuario = config.get('database', 'user')
         self._bdsenha = config.get('database', 'password')
-        self._bdnome = 'testepython'
+        self._bdnome = config.get('database', 'dbname')
 
     def conectarBd(self):
         self._conexaoBd = mysql.connector.connect(
