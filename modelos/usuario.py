@@ -1,10 +1,15 @@
 class Usuario:
-    _nome = None
-    _nivelAcesso = None
+    _id: int = None
+    _nome: str = None
+    _nivelAcesso: int = None
 
-    def __init__(self, nome: str , nivelAcesso: int):
+    def __init__(self, id: int, nome: str , nivelAcesso: int):
+        self._id = id
         self._nome = nome
         self._nivelAcesso = nivelAcesso
+
+    def getId(self):
+        return self._id
 
     def getNome(self):
         return self._nome

@@ -1,3 +1,4 @@
+from modelos.usuario import Usuario
 from reconhecedor_faces.reconhecedor_lbph import reconhecerPessoa
 from banco_dados.bd import Bd
 from tkinter import *
@@ -32,14 +33,25 @@ def obterDados():
     limparTodosOsCamposContendoDados()
     
     if idPessoaReconhecida != -1:
-        nomePessoaReconhecida = bd.obterNomePessoaReconhecida(idPessoaReconhecida)
-        textBoxNome.insert(0, nomePessoaReconhecida)
-        textBoxId.insert(0, idPessoaReconhecida)
+        nome, nivelAcesso = bd.obterDadosPessoaReconhecida(idPessoaReconhecida)
+        usuario = Usuario(idPessoaReconhecida, nome, nivelAcesso)
+        textBoxNome.insert(0, usuario.getNome())
+        textBoxId.insert(0, usuario.getId)
+
+        if usuario.getNivelAcesso() >= 1:
+            pass
+
+        if usuario.getNivelAcesso() >= 2:
+            pass
+
+        if usuario.getNivelAcesso() >= 3:
+            pass
+
+        #Obter dados aqui
     else:
         mensagem = 'Pessoa não registrada!'
         textBoxNome.insert(0, mensagem)
         textBoxId.insert(0, mensagem)
-        pass
 
 
 def limparTodosOsCamposContendoDados():

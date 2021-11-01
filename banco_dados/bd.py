@@ -30,6 +30,14 @@ class Bd:
         self._conexaoBd.close()
         return resultado
 
-    def obterNomePessoaReconhecida(self, idPessoaReconhecida: int) -> str:
-        resultado = self.executarQuery(f'SELECT nome FROM teste WHERE id={idPessoaReconhecida};')
-        return resultado[0]
+    def obterDadosPessoaReconhecida(self, idPessoaReconhecida: int):
+        return self.executarQuery(f'SELECT Nome, NivelAcesso FROM Usuario WHERE Id={idPessoaReconhecida};')
+
+    def obterDadosNivelUm(self):
+        return self.executarQuery(f'')
+
+    def obterDadosNivelDois(self):
+        return self.executarQuery(f'')
+
+    def obterDadosNivelTres(self):
+        return self.executarQuery(f'')
