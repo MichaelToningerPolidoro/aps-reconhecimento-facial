@@ -36,18 +36,20 @@ def obterDados():
         nome, nivelAcesso = bd.obterDadosPessoaReconhecida(idPessoaReconhecida)
         usuario = Usuario(idPessoaReconhecida, nome, nivelAcesso)
         textBoxNome.insert(0, usuario.getNome())
-        textBoxId.insert(0, usuario.getId)
+        textBoxId.insert(0, usuario.getId())
 
         if usuario.getNivelAcesso() >= 1:
+            #Pegar dados produtora
             pass
 
         if usuario.getNivelAcesso() >= 2:
+            #Pegar dados impostos
             pass
 
         if usuario.getNivelAcesso() >= 3:
+            #pegar dados agrotoxicos
             pass
 
-        #Obter dados aqui
     else:
         mensagem = 'Pessoa não registrada!'
         textBoxNome.insert(0, mensagem)
