@@ -18,21 +18,20 @@ textBoxId.place(x = 634, y = 308, width = 251, height = 31)
 canvas.create_text(642.5, 297.5, text = "ID", fill = "#000000", font = ("None", 12))
 canvas.create_text(656.5, 219.5, text = "Nome", fill = "#000000", font = ("None", 12))
 img0 = PhotoImage(file = f"imagens_tela/img0.png")
-canvas.create_text(767.5, 138.5, text = "Dados", fill = "#000000", font = ("Roboto-Bold", 24))
+canvas.create_text(767.5, 138.5, text = "Dados Pessoa Reconhecida", fill = "#000000", font = ("Roboto-Bold", 20))
 window.resizable(False, False)
 bd = Bd()
 
 def abrirTela():
-    b0 = Button(image = img0, borderwidth = 0, highlightthickness = 0, command = btn_clicked, relief = "flat")
+    b0 = Button(image = img0, borderwidth = 0, highlightthickness = 0, command = obterDados, relief = "flat")
     b0.place(x = 664, y = 404, width = 207, height = 45)
     window.mainloop()
 
-def btn_clicked():
+def obterDados():
     idPessoaReconhecida = reconhecerPessoa()
     limparTodosOsCamposContendoDados()
     
     if idPessoaReconhecida != -1:
-        #Acessar banco de dados e pegar o nome dessa pessoa
         nomePessoaReconhecida = bd.obterNomePessoaReconhecida(idPessoaReconhecida)
         textBoxNome.insert(0, nomePessoaReconhecida)
         textBoxId.insert(0, idPessoaReconhecida)
@@ -47,12 +46,14 @@ def limparTodosOsCamposContendoDados():
     textBoxNome.delete(0, len(textBoxNome.get()))
     textBoxId.delete(0, len(textBoxId.get()))
 
+
 def conectarComBancoDeDados():
     bd.conectarBd()
 
+
 def main():
-    abrirTela()
     conectarComBancoDeDados()
+    abrirTela()
 
 
 if __name__ == '__main__':
