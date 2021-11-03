@@ -1,3 +1,6 @@
+from modelos.dadosNivelDois import DadosNivelDois
+from modelos.dadosNivelTres import DadosNivelTres
+from modelos.dadosNivelUm import DadosNivelUm
 from modelos.usuario import Usuario
 from reconhecedor_faces.reconhecedor_lbph import reconhecerPessoa
 from banco_dados.bd import Bd
@@ -12,6 +15,8 @@ canvas.create_rectangle(0, 0, 0+985, 0+526, fill = "#edd2d2", outline = "")
 canvas.create_rectangle(0, 0, 0+551, 0+526, fill = "#33a7ff", outline = "")
 canvas.create_text(280.5, 138.5, text = "Dados obtidos no reconhecimento", fill = "#fcf7f7", font = ("ArchivoBlack-Regular", 24))
 canvas.create_rectangle(23, 164, 23+520, 164+7, fill = "#fff9f9", outline = "")
+#usar canvas para desenhar os itens que apareceram tem tela, guardando isso em uma variavel
+# que será um id, que pode ser usado para excluir o componente e criar outro no metodo de limpeza de dados
 textBoxNome = Entry(bd = 0, bg = "#e9e9e9", highlightthickness = 0)
 textBoxNome.place(x = 634, y = 230, width = 251, height = 31)
 textBoxId = Entry(bd = 0, bg = "#e9e9e9", highlightthickness = 0)
@@ -34,22 +39,35 @@ def obterDados(idProdutora = 1):
     limparTodosOsCamposContendoDados()
     
     if idPessoaReconhecida != -1:
-        nomeProdutora = endereco = produtos = producao = destino = qtdEmpregados = qtdMaquinas = nivelAutomacao = None
-        incentivosFiscais = impostosMunicipais = impostosEstaduais = impostosFederais = taxasFederais = None
-        descricaoAgrotoxico = None
+        dadosNivelUm = None
+        dadosNivelDois = None
+        dadosNivelTres = None
+
         nome, nivelAcesso = bd.obterDadosPessoaReconhecida(idPessoaReconhecida)
         usuario = Usuario(idPessoaReconhecida, nome, nivelAcesso)
         textBoxNome.insert(0, usuario.getNome())
         textBoxId.insert(0, usuario.getId())
 
         if usuario.getNivelAcesso() >= 1:
-            nomeProdutora, endereco, produtos, producao, destino, qtdEmpregados, qtdMaquinas, nivelAutomacao = bd.obterDadosNivelUm(idProdutora)
+            dadosNivelUm = DadosNivelUm(bd.obterDadosNivelUm(idProdutora))
 
         if usuario.getNivelAcesso() >= 2:
-            incentivosFiscais, impostosMunicipais, impostosEstaduais, impostosFederais, taxasFederais = bd.obterDadosNivelDois(idProdutora)
+            dadosNivelDois = DadosNivelDois(bd.obterDadosNivelDois(idProdutora))
 
         if usuario.getNivelAcesso() >= 3:
-            descricaoAgrotoxico = bd.obterDadosNivelTres(idProdutora)[0]
+            dadosNivelTres = DadosNivelTres(bd.obterDadosNivelTres(idProdutora))
+
+        if dadosNivelUm != None:
+            #Adicionar nos campos em tela os dados presentes no objeto
+            pass
+
+        if dadosNivelDois != None:
+            #Adicionar nos campos em tela os dados presentes no objeto
+            pass
+
+        if dadosNivelTres != None:
+            #Adicionar nos campos em tela os dados presentes no objeto
+            pass
 
     else:
         mensagem = 'Pessoa não registrada!'
@@ -60,6 +78,7 @@ def obterDados(idProdutora = 1):
 def limparTodosOsCamposContendoDados():
     textBoxNome.delete(0, len(textBoxNome.get()))
     textBoxId.delete(0, len(textBoxId.get()))
+    #implementar limpeza nos campos dos dados de tela
 
 
 def conectarComBancoDeDados():
