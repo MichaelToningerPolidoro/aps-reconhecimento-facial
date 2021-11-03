@@ -33,11 +33,32 @@ class Bd:
     def obterDadosPessoaReconhecida(self, idPessoaReconhecida: int):
         return self.executarQuery(f'SELECT Nome, NivelAcesso FROM Usuario WHERE Id={idPessoaReconhecida};')
 
-    def obterDadosNivelUm(self):
-        return self.executarQuery(f'')
+    def obterDadosNivelUm(self, idProdutora: int):
+        return self.executarQuery(f"""
+            SELECT 
+                Nome, Endereco, Produtos, ProducaoAnual, DestinoProducao, QtdEmpregados, QtdMaquinas, NivelAutomacao 
+            FROM 
+                Produtora
+            WHERE
+                Id = {idProdutora}
+        """)
 
-    def obterDadosNivelDois(self):
-        return self.executarQuery(f'')
+    def obterDadosNivelDois(self, idProdutora: int):
+        return self.executarQuery(f"""
+            SELECT
+                IncentivosFiscais, ImpostosMunicipais, ImpostosEstadual, ImpostosFederal, TaxasFederal
+            FROM
+                Impostos
+            WHERE
+                Id = {idProdutora}
+        """)
 
-    def obterDadosNivelTres(self):
-        return self.executarQuery(f'')
+    def obterDadosNivelTres(self, idProdutora: int):
+        return self.executarQuery(f"""
+            SELECT
+                Descricao
+            FROM
+                Agrotoxico
+            WHERE
+                Id = {idProdutora}
+        """)

@@ -21,3 +21,6 @@ venv.bak/
 # PyBuilder
 .pybuilder/
 target/
+
+### VS Code ###
+.vscode/

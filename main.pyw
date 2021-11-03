@@ -28,27 +28,28 @@ def abrirTela():
     b0.place(x = 664, y = 404, width = 207, height = 45)
     window.mainloop()
 
-def obterDados():
+#Esse Id da produtora ainda é fixo, pois o projeto é apenas um protótipo
+def obterDados(idProdutora = 1):
     idPessoaReconhecida = reconhecerPessoa()
     limparTodosOsCamposContendoDados()
     
     if idPessoaReconhecida != -1:
+        nomeProdutora = endereco = produtos = producao = destino = qtdEmpregados = qtdMaquinas = nivelAutomacao = None
+        incentivosFiscais = impostosMunicipais = impostosEstaduais = impostosFederais = taxasFederais = None
+        descricaoAgrotoxico = None
         nome, nivelAcesso = bd.obterDadosPessoaReconhecida(idPessoaReconhecida)
         usuario = Usuario(idPessoaReconhecida, nome, nivelAcesso)
         textBoxNome.insert(0, usuario.getNome())
         textBoxId.insert(0, usuario.getId())
 
         if usuario.getNivelAcesso() >= 1:
-            #Pegar dados produtora
-            pass
+            nomeProdutora, endereco, produtos, producao, destino, qtdEmpregados, qtdMaquinas, nivelAutomacao = bd.obterDadosNivelUm(idProdutora)
 
         if usuario.getNivelAcesso() >= 2:
-            #Pegar dados impostos
-            pass
+            incentivosFiscais, impostosMunicipais, impostosEstaduais, impostosFederais, taxasFederais = bd.obterDadosNivelDois(idProdutora)
 
         if usuario.getNivelAcesso() >= 3:
-            #pegar dados agrotoxicos
-            pass
+            descricaoAgrotoxico = bd.obterDadosNivelTres(idProdutora)[0]
 
     else:
         mensagem = 'Pessoa não registrada!'
