@@ -6,17 +6,55 @@ from reconhecedor_faces.reconhecedor_lbph import reconhecerPessoa
 from banco_dados.bd import Bd
 from tkinter import *
 
+bgColor = "#33a7ff"
+textColor = "#ffffff"
+labelFont = ("ArchivoBlack-Regular", 12)
+
 window = Tk()
 window.geometry("985x526")
 window.configure(bg = "#ffffff")
 canvas = Canvas(window, bg = "#ffffff", height = 526, width = 985, bd = 0, highlightthickness = 0, relief = "ridge")
 canvas.place(x = 0, y = 0)
+
 canvas.create_rectangle(0, 0, 0+985, 0+526, fill = "#edd2d2", outline = "")
 canvas.create_rectangle(0, 0, 0+551, 0+526, fill = "#33a7ff", outline = "")
 canvas.create_text(280.5, 138.5, text = "Dados obtidos no reconhecimento", fill = "#fcf7f7", font = ("ArchivoBlack-Regular", 24))
 canvas.create_rectangle(23, 164, 23+520, 164+7, fill = "#fff9f9", outline = "")
-#usar canvas para desenhar os itens que apareceram tem tela, guardando isso em uma variavel
-# que será um id, que pode ser usado para excluir o componente e criar outro no metodo de limpeza de dados
+
+labelNomeProdutora = Label(text="Nome da produtora: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelEndereco = Label(text="Endereço: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelProduto = Label(text="Produto: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelProducao = Label(text="Produção: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelDestino = Label(text="Destino: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelQtdEmpregados = Label(text="Quantidade de empregados: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelQtdMaquinas = Label(text="Quantidade de máquinas: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelNivelAutomacao = Label(text="Nível de automação: ", bg=bgColor, foreground=textColor, font=labelFont)
+
+labelIncentivosFiscais = Label(text="Incentivos Fiscais: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelimpostosMunicipais = Label(text="Impostos Municipais: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelImpostosEstaduais = Label(text="Impostos Estaduais: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelImpostosFederais = Label(text="Impostos Federais: ", bg=bgColor, foreground=textColor, font=labelFont)
+labelTaxasFederais = Label(text="Taxas Federais: ", bg=bgColor, foreground=textColor, font=labelFont)
+
+labelDescricaoAgrotoxico = Label(text="Agrotóxico utilizado: ", bg=bgColor, foreground=textColor, font=labelFont)
+
+labelNomeProdutora.place(x=20, y=180)
+labelEndereco.place(x=20, y=200)
+labelProduto.place(x=20, y=220)
+labelProducao.place(x=20, y=240)
+labelDestino.place(x=20, y=260)
+labelQtdEmpregados.place(x=20, y=280)
+labelQtdMaquinas.place(x=20, y=300)
+labelNivelAutomacao.place(x=20, y=320)
+
+labelIncentivosFiscais.place(x=20, y=360)
+labelimpostosMunicipais.place(x=20, y=380)
+labelImpostosEstaduais.place(x=20, y=400)
+labelImpostosFederais.place(x=20, y=420)
+labelTaxasFederais.place(x=20, y=440)
+
+labelDescricaoAgrotoxico.place(x=20, y=480)
+
 textBoxNome = Entry(bd = 0, bg = "#e9e9e9", highlightthickness = 0)
 textBoxNome.place(x = 634, y = 230, width = 251, height = 31)
 textBoxId = Entry(bd = 0, bg = "#e9e9e9", highlightthickness = 0)
