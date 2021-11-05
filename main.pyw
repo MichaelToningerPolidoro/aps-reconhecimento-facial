@@ -6,6 +6,7 @@ from reconhecedor_faces.reconhecedor_lbph import reconhecerPessoa
 from banco_dados.bd import Bd
 from tkinter import *
 
+msgSemAcessoAoDado = 'Sem acesso a esse dado!'
 bgColor = "#33a7ff"
 textColor = "#ffffff"
 labelFont = ("ArchivoBlack-Regular", 12)
@@ -96,16 +97,32 @@ def obterDados(idProdutora = 1):
             dadosNivelTres = DadosNivelTres(bd.obterDadosNivelTres(idProdutora))
 
         if dadosNivelUm != None:
-            #Adicionar nos campos em tela os dados presentes no objeto
-            pass
+            labelNomeProdutora.config(text=f'Nome da produtora: {dadosNivelUm.getNomeProdutora()}')
+            labelEndereco.config(text=f'Endereço: {dadosNivelUm.getEndereco()}')
+            labelProduto.config(text=f'Produto: {dadosNivelUm.getProdutos()}')
+            labelProducao.config(text=f'Produção: {dadosNivelUm.getProducao()}')
+            labelDestino.config(text=f'Destino: {dadosNivelUm.getDestino()}')
+            labelQtdEmpregados.config(text=f'Quantidade de empregados: {dadosNivelUm.getQuantiaEmpregados()}')
+            labelQtdMaquinas.config(text=f'Quantidade de máquinas: {dadosNivelUm.getQuantidaMaquinas()}')
+            labelNivelAutomacao.config(text=f'Nível de automação: {dadosNivelUm.getNivelAutomacao()}')
 
         if dadosNivelDois != None:
-            #Adicionar nos campos em tela os dados presentes no objeto
-            pass
+            labelIncentivosFiscais.config(text=f'Incentivos Fiscais: {dadosNivelDois.getIncentivosFiscais()}')
+            labelimpostosMunicipais.config(text=f'Impostos Municipais: {dadosNivelDois.getImpostosMunicipais()}')
+            labelImpostosEstaduais.config(text=f'Impostos Estaduais: {dadosNivelDois.getImpostosEstaduais()}')
+            labelImpostosFederais.config(text=f'Impostos Federais: {dadosNivelDois.getImpostosFederais()}')
+            labelTaxasFederais.config(text=f'Taxas Federais: {dadosNivelDois.getTaxasFederais()}')
+        else:
+            labelIncentivosFiscais.config(text=f'Incentivos Fiscais: {msgSemAcessoAoDado}')
+            labelimpostosMunicipais.config(text=f'Impostos Municipais: {msgSemAcessoAoDado}')
+            labelImpostosEstaduais.config(text=f'Impostos Estaduais: {msgSemAcessoAoDado}')
+            labelImpostosFederais.config(text=f'Impostos Federais: {msgSemAcessoAoDado}')
+            labelTaxasFederais.config(text=f'Taxas Federais: {msgSemAcessoAoDado}')
 
         if dadosNivelTres != None:
-            #Adicionar nos campos em tela os dados presentes no objeto
-            pass
+            labelDescricaoAgrotoxico.config(text=f'Agrotóxico utilizado: {dadosNivelTres.getDescricaoAgrotoxico()}')
+        else:
+            labelDescricaoAgrotoxico.config(text=f'Agrotóxico utilizado: {msgSemAcessoAoDado}')
 
     else:
         mensagem = 'Pessoa não registrada!'
@@ -116,7 +133,6 @@ def obterDados(idProdutora = 1):
 def limparTodosOsCamposContendoDados():
     textBoxNome.delete(0, len(textBoxNome.get()))
     textBoxId.delete(0, len(textBoxId.get()))
-    #implementar limpeza nos campos dos dados de tela
 
 
 def conectarComBancoDeDados():

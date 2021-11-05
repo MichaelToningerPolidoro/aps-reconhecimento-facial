@@ -25,7 +25,7 @@ class DadosNivelUm:
         return self._endereco
 
     def getProdutos(self):
-        return self._produdutos
+        return self._produtos
     
     def getProducao(self):
         return self._producao
