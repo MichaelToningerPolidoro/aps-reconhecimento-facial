@@ -21,6 +21,14 @@
   <br/><br/>[Voltar ao índice](#indice)
   
 ## <a name='sobre-aplicacao'>2. Sobre a aplicação 📷</a>
+   A aplicação consiste em um sistema de autenticação biométrica. O método escolhido
+   foi o de reconhecimento facial, feito em tempo real através de uma WebCam.
+   <br/>
+   Como se trata de um protótipo, os rostos são cadastrados previamente, e então,
+   obtido seu ID no momento do reconhecimento. Após esse passo, é realizada a busca
+   no banco de dados, seu nome e nível de acesso aos dados que serão obtidos posteriormente.
+   <br/>
+   **OBS:** Foram utilizados dados fictícios na elaboração do projeto.
 
   <br/><br/>[Voltar ao índice](#indice)
   
@@ -43,5 +51,13 @@
   <br/><br/>[Voltar ao índice](#indice)
   
 ## <a name='como-utilizar'>5. Como utilizar? 🤔</a>
+   Para utilizar o projeto, é necessário:
+   - Ter uma WebCam no computador
+   - Instalar o python 3.x e o MySql
+   - Clonar o projeto
+   - Instalar as dependências presentes no arquivo `requirements.txt`
+   - Realizar a captura de fotos no módulo `reconhecedor_faces` presente no script `captura_foto.py`
+   - Executar o script do banco de dados presente no módulo `banco_dados` em `aps.sql`
+   - Executar o programa principal `main.pyw`
 
   <br/><br/>[Voltar ao índice](#indice)
